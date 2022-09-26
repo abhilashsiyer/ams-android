@@ -69,15 +69,15 @@ publishing {
             name = "MyRepo" //  optional target repository name
             url = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
             credentials {
-                username = findProperty("sonaTypeUserName")
-                password = findProperty("sonaTypePassword")
+                username = findProperty("SONATYPE_USER")
+                password = findProperty("SONATYPE_PASSWORD")
             }
         }
     }
 
     signing {
-        def signingKey = findProperty("signingKey")
-        def signingPassword = findProperty("signingPassword")
+        def signingKey = findProperty("PGP_SIGNING_KEY")
+        def signingPassword = findProperty("PGP_SIGNING_PASSWORD")
         useInMemoryPgpKeys(signingKey, signingPassword)
         sign publishing.publications["mavenJava"]
     }
