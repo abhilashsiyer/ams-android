@@ -1,0 +1,84 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    from sourceSets.main.allSource
+    archiveClassifier.set('sources')
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    from javadoc.destinationDir
+    archiveClassifier.set('javadoc')
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+group 'io.github.abhilashsiyer'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact sourcesJar
+            artifact javadocJar
+
+            from components.java
+
+            pom {
+                name.set("Ams Android")
+                description.set("AMS")
+                url.set("https://github.com/abhilashsiyer")
+                licenses {
+                    license {
+                        name.set("MIT Licence")
+                        url.set("https://github.com/abhilashsiyer/ams-android/blob/master/LICENSE")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("Abhi")
+                        name.set("Abhilash Srinivasa")
+                        email.set("Abhilashsiyer@gmail.com")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:https://github.com/abhilashsiyer/ams-android.git")
+                    developerConnection.set("scm:git:https://github.com/abhilashsiyer/ams-android.git")
+                    url.set("https://github.com/abhilashsiyer")
+                }
+
+            }
+        }
+    }
+    repositories {
+        maven {
+            name = "MyRepo" //  optional target repository name
+            url = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
+            credentials {
+                username = findProperty("sonaTypeUserName")
+                password = findProperty("sonaTypePassword")
+            }
+        }
+    }
+
+    signing {
+        def signingKey = findProperty("signingKey")
+        def signingPassword = findProperty("signingPassword")
+        useInMemoryPgpKeys(signingKey, signingPassword)
+        sign publishing.publications["mavenJava"]
+    }
+}
