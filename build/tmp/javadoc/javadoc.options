@@ -1,0 +1,7 @@
+-classpath '/Users/abhilashsrinivasa/Documents/ams-android/build/classes/java/main:/Users/abhilashsrinivasa/Documents/ams-android/build/resources/main'
+-d '/Users/abhilashsrinivasa/Documents/ams-android/build/docs/javadoc'
+-doctitle 'ams-android 1.1 API'
+-notimestamp 
+-quiet 
+-windowtitle 'ams-android 1.1 API'
+'/Users/abhilashsrinivasa/Documents/ams-android/src/main/java/com/ams/android/Sample.java'

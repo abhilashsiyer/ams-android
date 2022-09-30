@@ -4,23 +4,22 @@ plugins {
     id 'signing'
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
     from sourceSets.main.allSource
-    archiveClassifier.set('sources')
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    from javadoc.destinationDir
-    archiveClassifier.set('javadoc')
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
 }
 
 artifacts {
-    archives sourcesJar
-    archives javadocJar
+    archives javadocJar, sourcesJar
 }
 
 group 'io.github.abhilashsiyer'
-version '1.0-SNAPSHOT'
+version '1.1'
 
 repositories {
     mavenCentral()
@@ -31,6 +30,15 @@ dependencies {
 }
 
 publishing {
+    repositories {
+        maven {//  optional target repository name
+            url = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+            credentials {
+                username = findProperty("SONATYPE_USER")
+                password = findProperty("SONATYPE_PASSWORD")
+            }
+        }
+    }
     publications {
         mavenJava(MavenPublication) {
             artifact sourcesJar
@@ -64,21 +72,11 @@ publishing {
             }
         }
     }
-    repositories {
-        maven {
-            name = "MyRepo" //  optional target repository name
-            url = "https://oss.sonatype.org/service/local/staging/deploy/maven2"
-            credentials {
-                username = findProperty("SONATYPE_USER")
-                password = findProperty("SONATYPE_PASSWORD")
-            }
-        }
-    }
+}
 
-    signing {
-        def signingKey = findProperty("PGP_SIGNING_KEY")
-        def signingPassword = findProperty("PGP_SIGNING_PASSWORD")
-        useInMemoryPgpKeys(signingKey, signingPassword)
-        sign publishing.publications["mavenJava"]
-    }
+signing {
+    def signingKey = findProperty("PGP_SIGNING_KEY")
+    def signingPassword = findProperty("PGP_SIGNING_PASSWORD")
+    useInMemoryPgpKeys(signingKey, signingPassword)
+    sign publishing.publications.mavenJava
 }

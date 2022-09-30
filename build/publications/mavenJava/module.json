@@ -1,0 +1,61 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "io.github.abhilashsiyer",
+    "module": "ams-android",
+    "version": "1.1",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "6.1",
+      "buildId": "4t6yjfzzl5ctdbvsxm4kz7hpta"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "ams-android-1.1.jar",
+          "url": "ams-android-1.1.jar",
+          "size": 996,
+          "sha512": "66b764988a1620e3ab758fb492f5e697fb1199dceadd52ac5e6250238756c2a5875a178cd9c259aad2d4ede4199edbe95a611d6ca5571710b5730351edcf94eb",
+          "sha256": "9e8e7fba0ae4fdad42d2a8bebabc98176085b031744d50ef88d77211d62d7dcb",
+          "sha1": "35467404e757790a55d3a41d1d4125b685e3679e",
+          "md5": "0e3926e9611a679a73c85f80f5d9dbf0"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 11,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "ams-android-1.1.jar",
+          "url": "ams-android-1.1.jar",
+          "size": 996,
+          "sha512": "66b764988a1620e3ab758fb492f5e697fb1199dceadd52ac5e6250238756c2a5875a178cd9c259aad2d4ede4199edbe95a611d6ca5571710b5730351edcf94eb",
+          "sha256": "9e8e7fba0ae4fdad42d2a8bebabc98176085b031744d50ef88d77211d62d7dcb",
+          "sha1": "35467404e757790a55d3a41d1d4125b685e3679e",
+          "md5": "0e3926e9611a679a73c85f80f5d9dbf0"
+        }
+      ]
+    }
+  ]
+}

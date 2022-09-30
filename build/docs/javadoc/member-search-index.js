@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"com.ams.android","c":"Sample","l":"Hello()"},{"p":"com.ams.android","c":"Sample","l":"Sample()","url":"%3Cinit%3E()"}]
